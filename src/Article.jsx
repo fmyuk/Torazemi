@@ -1,4 +1,5 @@
 import React from "react";
+import LikeButton from "./LikeButton";
 
 const Article = (props) => {
   return (
@@ -11,6 +12,8 @@ const Article = (props) => {
       <button onClick={() => props.toggleMinusOrder()}>-</button>
       <button onClick={() => props.toggleResetOrder()}>reset</button>
       <p>{props.order}</p>
+      <br />
+      <LikeButton count={props.count} />
     </div>
   )
 }

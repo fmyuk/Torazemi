@@ -1,8 +1,30 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 const LikeButton = (props) => {
+  const [count, counter] = useState(0);
+  const [limit, release] = useState(true);
+
+  const countUp = () => {
+    counter(count + 1)
+  }
+
+  useEffect(() => {
+    console.log("Render");
+    document.getElementById("counter").addEventListener("click", countUp);
+    if (count >= 10) {
+      counter(0);
+    }
+    return () => {
+      console.log("Unmounting");
+      document.getElementById("counter").removeEventListener("click", countUp);
+    }
+  }, [limit]);
+
   return (
-    <button id={"counter"}>いいね！ {props.count}</button>
+    <>
+      <button id={"counter"}>いいね！ {count}</button>
+      <button onClick={() => release(!limit)}>もっといいねしたい！</button>
+    </>
   )
 }
 

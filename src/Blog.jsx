@@ -7,9 +7,9 @@ class Blog extends React.Component {
   }
   render() {
     return (
-      <div>
+      <>
         <Article />
-      </div>
+      </>
     );
   }
 }
